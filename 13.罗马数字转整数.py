@@ -67,5 +67,48 @@
 #
 class Solution:
     def romanToInt(self, s: str) -> int:
-        
+       
+        Smap = {'I':1,'V':5,'X':10,'L':50,'C':100,'D':500,'M':1000}
+        Os = ['I','V','X','L','C','D','M']
+        sl = list(s)
+        cur_index = 0
+
+        num = 0 
+        i = 0
+        l = len(sl)
+        # 循环读取每一个字符
+        while i < l:
+            s = sl[i]
+            # 判断还有没有下一个字符
+            if i+1 < l:
+                
+                # 获取当前字符与下一个字符的大小
+                # 用于检测这两个字符的计算方式
+                # 如果后一个数比前一个大，用后一个减前一个数
+                # 否则前后两个字符是相加方式
+                si = Os.index(s)
+                sli = Os.index(sl[i+1])
+                # 如果后一个数比前一个大，用后一个减前一个数
+                if si < sli:
+                    num = num + Smap[sl[i+1]] - Smap[s]
+                   
+                    # 因为当前字符与后一个字符一起表示一个数，所以后一个字符直接跳过
+                    i = i+2
+                else:
+                    # 前后两个字符是相加方式 
+                    # 后一个字符放到下一次计算中
+                    # 这里不能 直接 Smap[sl[i+1]] + Smap[s]的原因是 sl[i+1] 与 sl[i+2] 可能表示一个数
+                    num = num + Smap[s]
+                    i = i+1
+                # print(num)
+            else:
+                i = i+1
+                num = num + Smap[s]
+
+                
+            
+        return num
+
+print(Solution().romanToInt('MCMXCIV'))
+
 
