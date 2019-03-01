@@ -38,5 +38,29 @@
 #
 class Solution:
     def reverse(self, x: int) -> int:
+        # 检测符号
+        z = 1
+        if x<0:
+            z = -1
         
+        INT_MAX = 2**31-1
+        INT_MIN = -2**31
+
+        t = str(abs(x))
+        l=list(t)
+        l.reverse()
+       
+        if len(l)>9:
+        # 如果是10位数才需要检测 是否溢出
+            y = int("".join(l[:-1]))
+            if y > INT_MAX/10:
+                # 如果最高位都比最大值大，最后一位无论是什么都会溢出
+                return 0
+            elif(int(l[-1])>7):
+                # 前面9位数不溢出 才检测最后一位数
+                return 0
+            return (y*10+int(l[-1]))*z
+        else:
+            # 如果小于9位数 直接反转 + 符号
+            return int("".join(l))*z
 
