@@ -42,5 +42,28 @@
 #
 class Solution:
     def searchInsert(self, nums: List[int], target: int) -> int:
-        
+    # def searchInsert(self, nums, target):
 
+        t_index = 0
+        if target in nums:
+            return nums.index(target)
+        else:
+            l = len(nums)
+            
+            for i,n in enumerate(nums):
+                # 如果该元素已经大于target 那该元素的索引位置就是target的位置
+                if target < n:
+                    t_index = i
+                    # 找到了位置就不用继续循环了
+                    break
+                else:
+                    # 如果没有找到默认放在最后面
+                    t_index = l
+
+
+            nums = nums[:t_index]+ [target] + nums[t_index:]
+            return t_index
+
+# [1,3,5,6]
+# 5
+# print(Solution().searchInsert([1,3,5,6],8))

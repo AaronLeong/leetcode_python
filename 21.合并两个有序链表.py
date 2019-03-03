@@ -21,17 +21,10 @@
 # 
 #
 # Definition for singly-linked list.
-class ListNode:
-    def __init__(self, x):
-        self.val = x
-        self.next = None
-
 # class ListNode:
 #     def __init__(self, x):
 #         self.val = x
-# #         self.next = None
-# [1,2,4]
-# [1,3,4]
+#         self.next = None
 
 
 class Solution:
@@ -55,7 +48,7 @@ class Solution:
                
                 if l1.val<l2.val:
                     
-                    if p == 0:
+                    if n == 0:
                         result = ListNode(l1.val)
                         # result 是 n 的容器
                         # 第一个节点 后面修改的n是递归的节点 不会改变result
@@ -79,7 +72,7 @@ class Solution:
                     l2 = l2.next
                     
                     if not l2:
-                        p.next = l1
+                        n.next = l1
         
         return result 
                     

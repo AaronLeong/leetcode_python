@@ -53,5 +53,20 @@
 #
 class Solution:
     def removeDuplicates(self, nums: List[int]) -> int:
+
+        lst = []
+        l = 0
+        for n in nums:
+            if n not in lst:    
+                lst.append(n)
+                l+=1
+        nums[:l] = lst
+        
+        return l
+       
+
+            
+            
+
         
 

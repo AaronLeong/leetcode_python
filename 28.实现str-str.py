@@ -38,4 +38,17 @@
 class Solution:
     def strStr(self, haystack: str, needle: str) -> int:
         
+        if haystack:
+            if needle:
+                if needle in haystack:
+                    i = haystack.index(needle)
+                    return i
+            else:
+                return 0
+
+        elif not haystack and not needle:
+            return 0
+            
+        return -1
+        
 

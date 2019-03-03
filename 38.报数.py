@@ -45,5 +45,53 @@
 #
 class Solution:
     def countAndSay(self, n: int) -> str:
+       
+        s = '1'
+        res = ''
+        c = 0
+        c_s = None
+        flag = False
+        
+        while n-1:
+
+            res = s
+            s = ''
+
+            for i,si in enumerate(res):
+
+                if not c_s:
+                    c_s = si
+                    c += 1
+                else:
+                    c += 1
+                
+            
+                if i+1 < len(res):
+                    if si != res[i+1]:
+                        # print('False 1')
+                        flag = True
+                elif i+1 == len(res):
+                    # print('False 2')
+                    flag = True
+
+                # print('c ,c_s', c ,c_s, flag)
+                if flag:
+                    if s == '':
+
+                        s = str(c)+str(c_s)
+                    else:
+                        s = s + str(c)+str(c_s)
+                    c_s = None
+                    c = 0
+                    flag = False
+                    
+            n -= 1
+            # res 
+                
+        return s
+                
+
+
+print('res',Solution().countAndSay(5))
         
 

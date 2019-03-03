@@ -58,5 +58,19 @@
 #
 class Solution:
     def removeElement(self, nums: List[int], val: int) -> int:
-        
+    # def removeElement(self, nums, val):
 
+        i = 0
+        # nums.sort()
+        while True:
+            if val in nums:
+                i = nums.index(val)
+                del nums[i]
+            else:
+                break
+        return len(nums)
+
+
+
+
+# print(Solution().removeElement([3,2,2,3], 3))

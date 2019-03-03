@@ -1,2 +1,1 @@
-for s in 'strs':
-    print(s)
+[3,2,2,3].index(10)
